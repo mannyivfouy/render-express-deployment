@@ -17,13 +17,57 @@ app.use(
   cors({
     origin: allowedOrigins,
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.send("🏃🏻‍♂️ API is Running");
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>API Status</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+          }
+          .card {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            text-align: center;
+          }
+          h1 {
+            color: #333;
+            margin-bottom: 10px;
+          }
+          p {
+            color: #666;
+            font-size: 16px;
+          }
+          .status {
+            color: #28a745;
+            font-weight: bold;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <h1>🚀 API is Running</h1>
+          <p>Status: <span class="status">Online</span></p>
+          <p>Welcome to Stock Management System API</p>
+        </div>
+      </body>
+    </html>
+  `);
 });
 
 //! Routes
